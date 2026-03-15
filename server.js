@@ -1,3 +1,4 @@
+import Stripe from "stripe";
 import express from "express";
 import colors from "colors";
 import morgan from "morgan";
@@ -11,16 +12,17 @@ import cloudinary from "cloudinary";
 import productRoutes from "./routes/productRoutes.js";
 import categoryRoute from "./routes/categoryRoute.js";
 import ordersRoutes from "./routes/ordersRoutes.js";
-import Stripe from "stripe";
+
 import helmet from "helmet";
 import mongoSanitize from "express-mongo-sanitize";
+// stripe config
+export const stripe = new Stripe(process.env.STRIPE_API_SECRET);
 // dot env config
 dotenv.config();
 
 //database
 connectDB();
-// stripe config
-export const stripe = new Stripe(process.env.STRIPE_API_SECRET);
+
 
 //cloudinary config
 cloudinary.v2.config({
