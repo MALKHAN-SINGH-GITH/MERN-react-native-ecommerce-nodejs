@@ -70,3 +70,4 @@ app.listen(PORT, () => {
       .magenta,
   );
 });
+export default app;
